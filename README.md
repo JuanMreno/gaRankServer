@@ -1,0 +1,2 @@
+# gaRankServer
+School app.
