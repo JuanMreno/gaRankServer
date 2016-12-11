@@ -1,0 +1,425 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Documento sin título</title>
+    <link rel="stylesheet" href="jsoneditor.css"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        function loadXMLDoc() {
+            var xmlhttp;
+            var data = document.getElementById("inputData").value;
+
+            if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            }
+            else {// code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    xmlDoc = xmlhttp.responseXML;
+
+                    var obj = jQuery.parseJSON(xmlDoc.getElementsByTagName("string")[0].innerHTML);
+                    var opt = {
+                        change: function (data) { },
+                        propertyclick: function (path) { }
+                    };
+                    opt.propertyElement = '<input>';
+                    opt.valueElement = '<input>';
+                    $('#myDiv').jsonEditor(obj, opt);
+                }
+            }
+            xmlhttp.open("POST", "WebService.asmx/entry", true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xmlhttp.send("data=" + window.btoa(data));
+
+        }
+    </script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+
+<body>
+    <div style="margin-top:3%;margin-left:2%">
+        <select id="chooseTipo">
+        <option value='
+            <button type="button" onclick="loadXMLDoc()">
+                Change Content</button>
+            <input id="inputData" name="data" type="text" value="" size="170">
+            <div id="myDiv" class="json-editor"><h2></h2></div>'> Consulta
+        </option>
+        </select>
+         
+        <select id="chooseLoad">
+
+            <option value='<FORM ACTION = "LoadFiles.asmx/loadMAESTRA_MATERIALES" METHOD = "POST" ENCTYPE = "multipart/form-data" class="ReglaI" target="_blank">
+                <blockquote> 
+                   USUARIOS_ID:
+                   <input type="text" name="USUARIOS_ID" value="2"/>
+                   FECHA
+                   <input type="text" name="FECHA" value="21/04/2014"/>
+                  <INPUT NAME = "upload" TYPE = "file">
+                  <INPUT TYPE = "SUBMIT" VALUE = "Subir MAESTRA_MATERIALES">
+                  </p>  
+                </p>
+                </blockquote> 
+            </FORM>'>Subir MAESTRA_MATERIALES</option>
+
+            <option value='<FORM ACTION = "LoadFiles.asmx/loadEficienciaPlantas" METHOD = "POST" ENCTYPE = "multipart/form-data" class="ReglaI" target="_blank">
+                <blockquote> 
+                   USUARIOS_ID:
+                   <input type="text" name="USUARIOS_ID" value="2"/>
+                   FECHA
+                   <input type="text" name="FECHA" value="21/04/2014"/>
+                  <INPUT NAME = "upload" TYPE = "file">
+                  <INPUT TYPE = "SUBMIT" VALUE = "Subir Eficiencias Plantas">
+                  </p>  
+                </p>
+                </blockquote> 
+            </FORM>'>Subir Eficiencias Plantas</option>
+
+            <option value='<FORM ACTION = "LoadFiles.asmx/loadAJUSTE_SILOS" METHOD = "POST" ENCTYPE = "multipart/form-data" class="ReglaI" target="_blank">
+                <blockquote> 
+                   USUARIOS_ID:
+                   <input type="text" name="USUARIOS_ID" value="2"/>
+                   FECHA
+                   <input type="text" name="FECHA" value="21/04/2014"/>
+                  <INPUT NAME = "upload" TYPE = "file">
+                  <INPUT TYPE = "SUBMIT" VALUE = "Subir AJUSTE SILOS">
+                  </p>  
+                </p>
+                </blockquote> 
+            </FORM>'>Subir AJUSTE SILOS</option>
+
+            <option value='<FORM ACTION = "LoadFiles.asmx/loadVARIACION_USO" METHOD = "POST" ENCTYPE = "multipart/form-data" class="ReglaI" target="_blank">
+                <blockquote> 
+                   USUARIOS_ID:
+                   <input type="text" name="USUARIOS_ID" value="2"/>
+                   FECHA
+                   <input type="text" name="FECHA" value="21/04/2014"/>
+                  <INPUT NAME = "upload" TYPE = "file">
+                  <INPUT TYPE = "SUBMIT" VALUE = "Subir Eficiencias Plantas">
+                  </p>  
+                </p>
+                </blockquote> 
+            </FORM>'>Subir Variación de Uso</option>
+
+            <option value='<FORM ACTION = "LoadFiles.asmx/loadMETAS" METHOD = "POST" ENCTYPE = "multipart/form-data" class="ReglaI" target="_blank">
+                <blockquote> 
+                   USUARIOS_ID:
+                   <input type="text" name="USUARIOS_ID" value="2"/>
+                   FECHA
+                   <input type="text" name="FECHA" value="21/04/2014"/>
+                  <INPUT NAME = "upload" TYPE = "file">
+                  <INPUT TYPE = "SUBMIT" VALUE = "Subir METAS">
+                  </p>  
+                </p>
+                </blockquote> 
+            </FORM>'>Subir METAS</option>
+
+            <option value='<FORM ACTION = "LoadFiles.asmx/cargaZMERBAL" METHOD = "POST" ENCTYPE = "multipart/form-data" class="ReglaI" target="_blank">
+                <blockquote> 
+                   USUARIOS_ID:
+                   <input type="text" name="USUARIOS_ID" value="2"/>
+                   FECHA
+                   <input type="text" name="FECHA" value="21/04/2014"/>
+                  <INPUT NAME = "upload" TYPE = "file">
+                  <INPUT TYPE = "SUBMIT" VALUE = "Subir ZMERBAL">
+                  </p>  
+                </p>
+                </blockquote> 
+            </FORM>'>Cargar ZMERBAL</option>
+
+            <option value='<FORM ACTION = "LoadFiles.asmx/loadZQMR_VALCAR_LOTES" METHOD = "POST" ENCTYPE = "multipart/form-data" class="ReglaI" target="_blank">
+                <blockquote> 
+                   USUARIOS_ID:
+                   <input type="text" name="USUARIOS_ID" value="2"/>
+                   FECHA
+                   <input type="text" name="FECHA" value="21/04/2014"/>
+                  <INPUT NAME = "upload" TYPE = "file">
+                  <INPUT TYPE = "SUBMIT" VALUE = "Subir ZQMR">
+                  </p>  
+                </p>
+                </blockquote> 
+            </FORM>'>Subir ZQMR_VALCAR_LOTES</option>
+        
+            <option value='<FORM ACTION = "LoadFiles.asmx/loadEficienciaDiarias" METHOD = "POST" ENCTYPE = "multipart/form-data" class="ReglaI" target="_blank">
+                <blockquote> 
+                   USUARIOS_ID:
+                   <input type="text" name="USUARIOS_ID" value="2"/>
+                   FECHA
+                   <input type="text" name="FECHA" value="21/04/2014"/>
+                  <INPUT NAME = "upload" TYPE = "file">
+                  <INPUT TYPE = "SUBMIT" VALUE = "Subir Eficiencia Lineas">
+                  </p>  
+                </p>
+                </blockquote> 
+            </FORM>'>Subir Eficiencia Diarias</option>
+        
+            <option value='<FORM ACTION = "LoadFiles.asmx/loadProduccionDiaria" METHOD = "POST" ENCTYPE = "multipart/form-data" class="ReglaI" target="_blank">
+                <blockquote> 
+                   USUARIOS_ID:
+                   <input type="text" name="USUARIOS_ID" value="2"/>
+                   FECHA
+                   <input type="text" name="FECHA" value="21/04/2014"/>
+                   <INPUT NAME = "upload" TYPE = "file">
+                  <INPUT TYPE = "SUBMIT" VALUE = "Subir Produccion Diaria">
+                  </p>  
+                </p>
+                </blockquote> 
+            </FORM>'>Subir Produccion Diaria</option>
+        
+            <option value='<form action="LoadFiles.asmx/loadIndicadoresCalidad" enctype="multipart/form-data" method="post" target="_blank">
+                <blockquote> 
+                   USUARIOS_ID:
+                   <input type="text" name="USUARIOS_ID" value="2"/>
+                   FECHA
+                   <input type="text" name="FECHA" value="21/04/2014"/>
+                   <input id="inputFile" name="file" type="file">
+                  <input type="submit" value="Subir Indicadores Calidad">
+                  </p>  
+                </p>
+                </blockquote> 
+            </FORM>  '>Subir Indicadores Calidad</option>
+        
+            <option value='<form action="LoadFiles.asmx/loadRbContainerLosses" enctype="multipart/form-data" method="post" target="_blank">
+                <blockquote> 
+                   USUARIOS_ID:
+                   <input type="text" name="USUARIOS_ID" value="2"/>
+                   FECHA
+                   <input type="text" name="FECHA" value="21/02/2014"/>
+                   <input id="File1" name="file" type="file">
+                  <input type="submit" value="Subir RbContainerLosses">
+                  </p>  
+                </p>
+                </blockquote> 
+            </FORM>'>Subir RbContainerLosses</option>
+        
+            <option value='<form action="LoadFiles.asmx/loadGEMs" enctype="multipart/form-data" method="post" target="_blank">
+                <blockquote> 
+                   USUARIOS_ID:
+                   <input type="text" name="USUARIOS_ID" value="2"/>
+                   FECHA
+                   <input type="text" name="FECHA" value="21/04/2014"/>
+                   <input id="File2" name="file" type="file">
+                  <input type="submit" value="Subir GEMs">
+                  </p>  
+                </p>
+                </blockquote> 
+            </FORM>'>Subir GEMs</option>
+        
+            <option value='<form action="LoadFiles.asmx/loadResiduos" enctype="multipart/form-data" method="post" target="_blank">
+                <blockquote> 
+                   USUARIOS_ID:
+                   <input type="text" name="USUARIOS_ID" value="2"/>
+                   FECHA
+                   <input type="text" name="FECHA" value="21/04/2014"/>
+                   PLANTAS_ID
+                   <input type="text" name="PLANTAS_ID" value="2"/>
+                   <input id="File3" name="file" type="file">
+                  <input type="submit" value="Subir Residuos">
+                  </p>  
+                </p>
+                </blockquote> 
+            </FORM>'>Subir Residuos</option>
+
+            <option value='<form action="LoadFiles.asmx/loadGentes" enctype="multipart/form-data" method="post" target="_blank">
+                <blockquote> 
+                   USUARIOS_ID:
+                   <input type="text" name="USUARIOS_ID" value="2"/>
+                   FECHA
+                   <input type="text" name="FECHA" value="21/04/2014"/>
+                   <input id="File4" name="file" type="file">
+                  <input type="submit" value="Subir Residuos">
+                  </p>  
+                </p>
+                </blockquote> 
+            </FORM>'>Subir Gentes</option>
+
+            <option value='<form action="LoadFiles.asmx/loadIQMSBrewing" enctype="multipart/form-data" method="post" target="_blank">
+                <blockquote> 
+                   FECHA:
+                   <input type="text" name="FECHA" value="2014/03/01"/>
+                   USUARIOS_ID:
+                   <input type="text" name="USUARIOS_ID" value="2"/>
+                   <input id="File6" name="file" type="file">
+                  <input type="submit" value="Subir">
+                  </p>  
+                </p>
+                </blockquote> 
+            </FORM>'>Subir IQMS Brewing</option>
+        
+            <option value='<form action="LoadFiles.asmx/loadIQMSPackaging" enctype="multipart/form-data" method="post" target="_blank">
+                <blockquote> 
+                   FECHA:
+                   <input type="text" name="FECHA" value="2014/03/01"/>
+                   USUARIOS_ID:
+                   <input type="text" name="USUARIOS_ID" value="2"/>
+                   <input id="File7" name="file" type="file">
+                  <input type="submit" value="Subir">
+                  </p>  
+                </p>
+                </blockquote> 
+            </FORM>'>Subir IQMS Packaging</option> 
+               
+            <option value='<form action="LoadFiles.asmx/loadTechnical" enctype="multipart/form-data" method="post" target="_blank">
+                <blockquote> 
+                   FECHA:
+                   <input type="text" name="FECHA" value="2013/04/01"/>
+                   USUARIOS_ID:
+                   <input type="text" name="USUARIOS_ID" value="2"/>
+                   <input id="File8" name="file" type="file">
+                  <input type="submit" value="Subir">
+                  </p>  
+                </p>
+                </blockquote> 
+            </FORM>'>Subir Technical</option>
+
+            <option value='<form action="LoadFiles.asmx/loadValoresIo" enctype="multipart/form-data" method="post" target="_blank">
+                <blockquote> 
+                   FECHA:
+                   <input type="text" name="FECHA" value="2013/04/01"/>
+                   USUARIOS_ID:
+                   <input type="text" name="USUARIOS_ID" value="2"/>
+                   PLANTAS_ID:
+                   <input type="text" name="PLANTAS_ID" value="1"/>
+                   <input id="File10" name="file" type="file">
+                  <input type="submit" value="Subir">
+                  </p>  
+                </p>
+                </blockquote> 
+                </FORM>'>Subir ValoresIO
+            </option>
+
+            <option value='<form action="LoadFiles.asmx/loadCanLosses" enctype="multipart/form-data" method="post" target="_blank">
+                <blockquote> 
+                   FECHA:
+                   <input type="text" name="FECHA" value="2013/04/01"/>
+                   USUARIOS_ID:
+                   <input type="text" name="USUARIOS_ID" value="2"/>
+                   <input id="File13" name="file" type="file">
+                  <input type="submit" value="Subir">
+                  </p>  
+                </p>
+                </blockquote> 
+                </FORM>'>Subir CanLosses
+            </option>
+        </select> 
+
+        <select id="chooseLoadComentarioAccion">
+            <option value='<form action="LoadFiles.asmx/loadFichaIndicador" enctype="multipart/form-data" method="post" target="_blank">
+                <blockquote> 
+                   USUARIOS_ID:
+                   <input type="text" name="USUARIOS_ID" value="2"/>
+                   INDICADORES_ID
+                   <input type="text" name="INDICADORES_ID" value="21/04/2014"/>
+                   <input id="File5" name="file" type="file">
+                  <input type="submit" value="Subir Residuos">
+                  </p>  
+                </p>
+                </blockquote> 
+            </FORM>'>Subir Ficha Indicador</option>
+
+            <option value='<form action="LoadFiles.asmx/loadArchivoComentario" enctype="multipart/form-data" method="post" target="_blank">
+                <blockquote> 
+                   COMENTARIOS_ID:
+                   <input type="text" name="COMENTARIOS_ID" value=""/>
+                   <input id="File16" name="file" type="file">
+                  <input type="submit" value="Subir">
+                  </p>  
+                </p>
+                </blockquote> 
+            </FORM>'>Subir Comentario</option> 
+               
+            <option value='<form action="LoadFiles.asmx/loadArchivoAccionClave" enctype="multipart/form-data" method="post" target="_blank">
+                <blockquote> 
+                   ACCIONESCLAVES_ID:
+                   <input type="text" name="ACCIONESCLAVES_ID" value=""/>
+                   <input id="File9" name="file" type="file">
+                  <input type="submit" value="Subir">
+                  </p>  
+                </p>
+                </blockquote> 
+            </FORM>'>Subir Accion Clave</option>             
+            
+            <option value='<form action="LoadPptFile.asmx/powerPoint" enctype="multipart/form-data" method="post" target="_self">
+                <blockquote> 
+                   ACCIONESCLAVES_ID:
+                   <input type="text" name="ACCIONESCLAVES_ID" value=""/>
+                   <input id="File11" name="file" type="file">
+                  <input type="submit" value="Subir">
+                  </p>  
+                </p>
+                </blockquote> 
+            </FORM>'>Subir PowerPoint</option> 
+
+            <option value='<form action="LoadFiles.asmx/loadAdjunto" enctype="multipart/form-data" method="post" target="_blank">
+                <blockquote> 
+                   USUARIOS_ID:
+                   <input type="text" name="USUARIOS_ID" value=""/>
+                   INDICADORES_ID:
+                   <input type="text" name="INDICADORES_ID" value=""/>
+                   FECHAINICIAL:
+                   <input type="text" name="FECHAINICIAL" value="2013/04/01"/>
+                   FECHAFINAL:
+                   <input type="text" name="FECHAFINAL" value="2014/03/31"/>
+                   TITULO:
+                   <input type="text" name="TITULO" value="Título"/>
+                   <input id="File12" name="file" type="file">
+                  <input type="submit" value="Subir">
+                  </p>  
+                </p>
+                </blockquote> 
+            </FORM>'>Subir Adjunto</option> 
+
+            <option value='<form action="LoadFiles.asmx/loadFactoryGAP" enctype="multipart/form-data" method="post" target="_blank">
+                <blockquote> 
+                   FECHA:
+                   <input type="text" name="FECHA" value=""/>
+                   USUARIOS_ID:
+                   <input type="text" name="USUARIOS_ID" value=""/>
+                   
+                   <input id="File14" name="file" type="file">
+                  <input type="submit" value="Subir">
+                  </p>  
+                </p>
+                </blockquote> 
+            </FORM>'>Subir Factory GAP</option> 
+            <option value='<form action="LoadFiles.asmx/loadMERMA" enctype="multipart/form-data" method="post" target="_blank">
+                <blockquote> 
+                   FECHA:
+                   <input type="text" name="FECHA" value=""/>
+                   FECHA EXCEL:
+                   <input type="text" name="FECHA_EXCEL" value=""/>
+                   USUARIOS_ID:
+                   <input type="text" name="USUARIOS_ID" value=""/>
+                   
+                   <input id="File15" name="file" type="file">
+                  <input type="submit" value="Subir">
+                  </p>  
+                </p>
+                </blockquote> 
+            </FORM>'>Subir Merma</option> 
+        </select> 
+    </div>
+    <div id="update" style="margin-top:3%">
+    </div>
+    
+    <script src="jquery.min.js"></script>
+    <script src="jquery.jsoneditor.js"></script>
+    <script>
+        $('#chooseTipo').click(function () {
+            $("#update").html($('#chooseTipo :selected').val());
+        });
+
+        $('#chooseLoad').click(function () {
+            $("#update").html($('#chooseLoad :selected').val());
+        });
+
+        $('#chooseLoadComentarioAccion').click(function () {
+            $("#update").html($('#chooseLoadComentarioAccion :selected').val());
+        });
+    </script>
+</body>
+</html>
