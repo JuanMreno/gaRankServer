@@ -1,0 +1,197 @@
+<div id="main">
+	<section id="contact" class="four">
+		<div class="container">
+			<div>
+				<h1 class="h1ContHead">
+					<span class="text">GESTIÓN DE AULA CLOUDLABS</span>
+					<span class="span">
+						<img src="../assets/img/cl-header.png" class="contImgHeader">
+					</span>
+    			</h1>
+			</div>
+			<div class="containerHeader">
+				<h1>Ranking global</h1>
+			</div>
+			<div class="row controlBar">
+			  <div class="col-xs-12 col-sm-5 col-md-5 col-lg-3">
+				<div class="containerDropDown">
+			  		<div class="row">
+			  			<div class="col-xs-3 col-sm-5 col-md-5 col-lg-5">
+							<span>País</span>
+				  		</div>
+				  		<div class="col-xs-9 col-sm-7 col-md-7 col-lg-7 inputContDropDown">
+							<div id="countryDropDown" class="dropdown">
+							  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+							    
+							    <span class="caret"></span>
+							  </button>
+							  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+							  </ul>
+							</div>
+				  		</div>
+			  		</div>
+				</div>
+			  </div>
+			  <div class="col-xs-12 col-sm-7 col-md-5 col-lg-4">
+			  	<div class="containerDropDown">
+			  		<div class="row">
+			  			<div class="col-xs-3 col-sm-5 col-md-5 col-lg-5">
+							<span>Ciudad</span>
+				  		</div>
+				  		<div class="col-xs-9 col-sm-7 col-md-7 col-lg-7 inputContDropDown">
+							<div id="cityDropDown" class="dropdown">
+							  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+							    
+							    <span class="caret"></span>
+							  </button>
+							  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+							  </ul>
+							</div>
+				  		</div>
+			  		</div>
+				</div>
+			  </div>
+			  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+				<div class="containerDropDown">
+			  		<div class="row">
+			  			<div class="col-xs-3 col-sm-5 col-md-5 col-lg-5">
+							<span>Escuela</span>
+				  		</div>
+				  		<div class="col-xs-9 col-sm-7 col-md-7 col-lg-7 inputContDropDown">
+							<div id="schoolDropDown" class="dropdown">
+							  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+							    
+							    <span class="caret"></span>
+							  </button>
+							  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+							  </ul>
+							</div>
+				  		</div>
+			  		</div>
+				</div>
+			  </div>
+			</div>
+			<!--
+			<div class="row controlBar">
+				<div class="col-xs-10 col-sm-7 col-md-7 col-lg-6">
+					<div class="containerDropDown">
+				  		<div class="row">
+				  			<div class="col-xs-3 col-sm-5 col-md-5 col-lg-5">
+								<span>Estudiante</span>
+					  		</div>
+					  		<div class="col-xs-9 col-sm-7 col-md-7 col-lg-7 inputContDropDown">
+								<div id="studentDropDown" class="dropdown">
+								  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+								    
+								    <span class="caret"></span>
+								  </button>
+								  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+								  </ul>
+								</div>
+					  		</div>
+				  		</div>
+					</div>
+				</div>	
+			</div>
+			-->
+			
+			<div id="jsGrid" class="jsGridTable consTable"></div>
+	        <!-- <div class="dropdown">
+			  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+			    Dropdown
+			    <span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+			    <li><a href="#">Action</a></li>
+			    <li><a href="#">Another action</a></li>
+			    <li><a href="#">Something else here</a></li>
+			    <li role="separator" class="divider"></li>
+			    <li><a href="#">Separated link</a></li>
+			  </ul>
+			</div> -->
+		</div>
+	</section>
+</div>
+
+
+<div id="practInfoModal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      	<!--<h4 class="modal-title">Práctica</h4>-->
+        <div class="row">
+        	<div class="col-xs-8 col-sm-8 col-md-9 col-lg-9">
+		        <h4 class="modal-title">Práctica</h4>
+        	</div>
+        	<div class="col-xs-4 col-sm-4 col-md-3 col-lg-3 labelStateCont">
+		        <span class="labelState">Estado</span>
+        	</div>
+        </div>
+      </div>
+      <div class="modal-body">
+      	<div class="row form-group">
+        	<div class="col-sm-7">
+		        <div class="input-group">
+				  <span class="input-group-addon" id="basic-addon1">Unidad</span>
+				  <input id="cUnidad" type="text" class="form-control only-read" placeholder="" aria-describedby="basic-addon1">
+				</div>
+        	</div>
+        </div>
+      	<div class="row form-group">
+        	<div class="col-sm-6">
+		        <div class="input-group">
+				  <span class="input-group-addon" id="basic-addon1">Fecha entrega</span>
+				  <input id="fEntrega" type="text" class="form-control only-read" placeholder="" aria-describedby="basic-addon1">
+				</div>
+        	</div>
+        	<div class="col-sm-6">
+		        <div class="input-group">
+				  <span class="input-group-addon" id="basic-addon1">Tiempo entrega</span>
+				  <input id="tEntrega" type="text" class="form-control only-read" placeholder="" aria-describedby="basic-addon1">
+				</div>
+        	</div>
+        </div>
+        <div class="row form-group">
+			<div class="col-sm-4">
+		        <div class="input-group">
+				  <span class="input-group-addon" id="basic-addon1" data-toggle="tooltip" data-placement="right" title="Nota del profesor">Nota 1</span>
+				  <input id="nProfesor" type="text" class="form-control only-read" placeholder="" aria-describedby="basic-addon1">
+				</div>
+			</div>
+			<div class="col-sm-4">
+		        <div class="input-group">
+				  <span class="input-group-addon" id="basic-addon1" data-toggle="tooltip" data-placement="right" title="Nota de laboratorio">Nota 2</span>
+				  <input id="nApp" type="text" class="form-control only-read" placeholder="" aria-describedby="basic-addon1">
+				</div>
+			</div>
+			<div class="col-sm-4">
+		        <div class="input-group">
+				  <span class="input-group-addon" id="basic-addon1" data-toggle="tooltip" data-placement="right" title="Nota final">Nota Final</span>
+				  <input id="nFinal" type="text" class="form-control only-read" placeholder="" aria-describedby="basic-addon1">
+				</div>
+			</div>
+		</div>	
+		<div class="row form-group">
+			<div class="col-sm-3">
+				<div class="input-group">
+				  <span class="input-group-addon" id="basic-addon1">Intentos</span>
+				  <input id="numInten" type="text" class="form-control only-read" placeholder="" aria-describedby="basic-addon1">
+				</div>
+			</div>
+		</div>
+		<br>
+		<h6 class="field-label">Observaciones</h6>
+		<textarea id="obsrv" class="form-control only-read" rows="3"></textarea>
+		
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <a id="aBtnDownL" href="" target="_blank">
+	        <button id="btnDownL" type="button" class="btn btn-primary">Ver reporte de práctica</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/ranking.js"></script>

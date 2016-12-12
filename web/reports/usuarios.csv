@@ -1,0 +1,8 @@
+TIPO,USUARIO,CONTRASEÑA,NOMBRE,APELLIDO,GRUPO
+ESTUDIANTE,est2,est,Andrés,Orozco,8-C
+ESTUDIANTE,est1,est,Carlos,García,8-B
+ESTUDIANTE,est3,est,Cesar,Mora,8-C
+ESTUDIANTE,est4,est,Felipe,Perez,8-C
+PROFESOR,pro1,pro,Mateo,Perez,-
+PROFESOR,pro2,pro,Sergio,Perez,-
+PROFESOR,pro3,pro,Victor,Vélez,-

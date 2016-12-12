@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<label for="data">Service</label>
+	<select name="service" id="selServId">
+		<option value="externals/login">login</option>
+		<option value="externals/put_lab">put_lab</option>
+		<option value="externals/getLab">getLab</option>
+		<option value="uploads/labs">upload_labs</option>
+		<option value="subjects/getAll">subjects/getAll</option>
+		<option value="users/resetPass">users/resetPass</option>
+		<option value="users/asignStudUser">users/asignStudUser</option>
+		<option value="groups/getGroupsByUser">groups/getGroupsByUser</option>
+		<option value="groups/getAll">groups/getAll</option>
+		<option value="groups/getAllByUser">groups/getAllByUser</option>
+		<option value="groups/asignUser">groups/asignUser</option>
+		<option value="laboratories/getBySubject">laboratories/getBySubject</option>
+		<option value="laboratories/create">laboratories/create</option>
+		<option value="laboratories/edit">laboratories/edit</option>
+		<option value="app/getParams">app/getParams</option>
+		<option value="app/edit">app/edit</option>
+		<option value="license/activate">license/activate</option>
+	</select>
+	<br>
+	<br>
+	<label for="data">login, get_lab Form</label>
+	<input id="dataInpt" name="data" type="text" style="width:100%">
+	<br>
+	<button onclick="sendData()">Send</button>
+	<br>
+	<br>
+	<label for="data">put_lab Form</label>
+	<form id="putLabForm" action="externals/put_lab" method="POST">
+		<input type="text" name="data" style="width: 100%;">
+		<input type="file" name="report_file">
+	</form>
+	<br>
+	<label for="data">upload_lab Form</label>
+	<form id="uploadLabsForm" action="uploads/labs" method="POST">
+		<input type="text" name="data" style="width: 100%;">
+		<input type="file" name="labs_file">
+	</form>
+	<br>
+	<button onclick="sendUploadLab()">Send</button>
+	<br>
+	<label for="data">upload_users Form</label>
+	<form id="uploadUsersForm" action="uploads/users" method="POST">
+		<input type="text" name="data" style="width: 100%;">
+		<input type="file" name="users_file">
+	</form>
+	<br>
+	<button onclick="sendUploadUsers()">Send</button>
+	<p id="resContId"></p>
+
+	<script src="assets/js/jquery.min.js"></script>
+	<script>
+		var CON_URL = "http://"+window.location.hostname+":3000/";
+
+		function utf8_to_b64( str ) {
+		  return window.btoa(unescape(encodeURIComponent( str )));
+		}
+
+		function b64_to_utf8( str ) {
+		  return decodeURIComponent(escape(window.atob( str )));
+		}
+
+		function sendData() {
+			var dataText = $("#dataInpt").val();
+			var service = $('#selServId option:selected').val();
+
+			var ajaxConfig;
+
+			if(service != "externals/put_lab"){
+				var jData = utf8_to_b64( dataText );
+				ajaxConfig = {
+					method: "GET",
+					url: CON_URL+service,
+					data:{data:jData}
+				}
+			}
+			else if(service == "externals/put_lab"){
+				var fd = new FormData(document.getElementById("putLabForm"));
+				ajaxConfig = {
+					method: "POST",
+					url: CON_URL+service,
+					data:fd,
+					processData: false,  // tell jQuery not to process the data
+  					contentType: false
+				}
+			}
+			else{
+				var fd = new FormData(document.getElementById("putLabForm"));
+				ajaxConfig = {
+					method: "POST",
+					url: CON_URL+service,
+					data:fd,
+					processData: false,  // tell jQuery not to process the data
+  					contentType: false
+				}
+			}
+
+			$.ajax(ajaxConfig)
+			.done(function( data ) {
+				
+				var res = $.parseJSON(b64_to_utf8(data));
+				$('#resContId').text(b64_to_utf8(data));
+				console.log(res);
+			})
+			.error(function(e) {
+				console.log("Error ajax.");
+			});
+		}
+
+		function sendUploadLab() {
+			var dataText = $("#dataInpt").val();
+			var service = $('#selServId option:selected').val();
+
+			var ajaxConfig;
+
+			var fd = new FormData(document.getElementById("uploadLabsForm"));
+			ajaxConfig = {
+				method: "POST",
+				url: CON_URL+"uploads/labs",
+				data:fd,
+				processData: false,  // tell jQuery not to process the data
+				contentType: false
+			};
+
+			$.ajax(ajaxConfig)
+			.done(function( data ) {
+				
+				var res = $.parseJSON(b64_to_utf8(data));
+				$('#resContId').text(b64_to_utf8(data));
+				console.log(res);
+			})
+			.error(function(e) {
+				console.log("Error ajax.");
+			});
+		}
+
+		function sendUploadUsers() {
+			var dataText = $("#dataInpt").val();
+			var service = $('#selServId option:selected').val();
+
+			var ajaxConfig;
+
+			var fd = new FormData(document.getElementById("uploadUsersForm"));
+			ajaxConfig = {
+				method: "POST",
+				url: CON_URL+"uploads/users",
+				data:fd,
+				processData: false,  // tell jQuery not to process the data
+				contentType: false
+			};
+
+			$.ajax(ajaxConfig)
+			.done(function( data ) {
+				
+				var res = $.parseJSON(b64_to_utf8(data));
+				$('#resContId').text(b64_to_utf8(data));
+				console.log(res);
+			})
+			.error(function(e) {
+				console.log("Error ajax.");
+			});
+		}
+	</script>
+</body>
+</html>

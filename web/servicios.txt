@@ -1,0 +1,91 @@
+
+	Modal Estudiante
+
+		Cambiar Contraseña de usuario (Estudiante, Profesor)
+		Service:	users/resetPass
+		Params		{"id":1,"pass":"363b122c528f54df4a0446b6bab05515","userName":"sadadasd"}
+
+		Obtener grupos de usuario
+		Service:	groups/getGroupsByUser
+		Params		{"userId":9}	
+
+		Obtener todos los grupos
+		Service:	groups/getAll
+		Params		{}	
+
+		Asignar Estudiante-Grupo
+		Service:	users/asignStudUser
+		Params		{"userId":9,"groupId":1}	
+
+	Modal Profesor
+
+		Cambiar Contraseña de usuario (Estudiante, Profesor)
+		Service:	users/resetPass
+		Params		{"id":"1","pass":"","userName":"sadadasd"}
+
+		Obtener grupos de usuario
+		Service:	groups/getAllByUser
+		Params		{"userId":2}
+
+		Asignar Profesor-Grupo
+		Service:	groups/asignUser
+		Params		{"userId":2,"groupId":4,"asignado":true}
+
+		Obtener los grupos y usuario-grupo
+		Service:	groups/getGroupsByUser
+		Params		{"userId":2}
+		Res:		[{"group_id": 1,"user_group_id": 39,"name": "7-A"}]
+
+		Obtener las materias por usuario-grupo
+		Service:	/subjects/getByUserGroup
+		Params		{"groupId":"1","userGroupId":"39"}
+		Res:		[{"id": 3,"sc_id": 3,"name": "Mecánica","asignado": 1  }]	
+
+		Asignar/Desasignar Profesor-Materia
+		Service:	/subjects/assignUserSubject
+		Params		{"userGroupId":"39","scId":4,"asignado":false}
+
+	Laboratorios
+
+		Obtener las materias
+		Service:	subjects/getAll
+		Params		{}
+		Res:		[{"id":1,"name":"Física"},{"id":2,"name":"Química"}]
+
+		Obtener las prácticas por materia
+		Service:	laboratories/getBySubject
+		Params		{"subjectId":1}
+		Res:		[{"id": 8,"name": "Relación potencial","lab_code": "F001","lesson_name": "Mecanica"}]
+
+		Crear un laboratorio
+		Service:	laboratories/create
+		Params		{"subjectId":1, "labName":"Pendulo compuesto", "lessonName":"Mecanica", "labCode":"F008"}
+
+		Editar un laboratorio
+		Service:	laboratories/edit
+		Params		{"labId":15, "subjectId":1, "labName":"Pendulo compuesto2", "lessonName":"Mecanica2", "labCode":"F010"}	
+		Res
+			{"status":"false","data":{"state":"REPEATED"}}  -> Nombre de laboratorio o código ya existe
+			{"status":"true","data":{"state":"OK"}}			-> OK
+
+		Eliminar un laboratorio
+		Service:	laboratories/delete
+		Params		{"labId":1}
+
+	Módulo Parámetros
+
+		Obtener parametros
+		Service:	app/getParams
+		Params		{}
+		Res:		:[
+						{"name":"SCHOOL_NAME","value":"Instituto Técnico"},
+						{"name":"COUNTRY","value":"Colombia"},
+						{"name":"CITY","value":"Pereira"},
+						{"name":"LICENCE","value":"KLA2132ASDAJ231"},
+						{"name":"RANK_SEND_ENABLED","value":"false"}
+					]
+
+		Editar parámetro
+		Service:	app/edit
+		Params		{"name":"SCHOOL_NAME","value":"Instituto Tales"}	
+

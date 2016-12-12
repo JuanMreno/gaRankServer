@@ -37,14 +37,20 @@ public class WebService : System.Web.Services.WebService
 
         switch (dataObj["METHOD"].ToString())
         {
-        //////////////////////            Clase Login             /////////////////////////////////////////////////////    
+            //////////////////////            Clase Login             /////////////////////////////////////////////////////    
             case "put_ranking":
-                    result = (new Ranking()).put_ranking(param);
-                    break;
+                result = (new Ranking()).put_ranking(param);
+                break;
+            case "getFilters":
+                result = (new Ranking()).getFilters(param);
+                break;
+            case "getRankingTable":
+                result = (new Ranking()).getRankingTable(param);
+                break;
             default:
-                    result["ESTADO"] = "FALSE";
-                    result["MENSAJE"] = "Metodo " + dataObj["METHOD"].ToString() + " no encontrado";
-                    break;
+                result["ESTADO"] = "FALSE";
+                result["MENSAJE"] = "Metodo " + dataObj["METHOD"].ToString() + " no encontrado";
+                break;
         }
         res["RESULT"] = result;
         return res.ToString();

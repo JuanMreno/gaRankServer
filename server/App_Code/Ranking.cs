@@ -215,5 +215,193 @@ public class Ranking
         }
         return result;
     }
-    
+
+    public JObject getFilters(JObject param)
+    {
+        JObject result = new JObject();
+        ConexionSQL conexion = new ConexionSQL();
+        String schoolId;
+
+        if ((conexion.openConexion()) == "TRUE")
+        {
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            try
+            {
+                adapter = new SqlDataAdapter(
+                    String.Format(@"
+                        SELECT	
+	                        name as name
+                        FROM
+	                        schools
+
+                        SELECT	
+	                        city as name
+                        FROM
+	                        schools
+                        GROUP BY
+	                        city
+
+                        SELECT	
+	                        country as name
+                        FROM
+	                        schools
+                        GROUP BY
+	                        country
+                        "
+                    ),
+                    conexion.getConexion()
+                );
+
+                DataSet dataSet = new DataSet();
+                adapter.Fill(dataSet);
+
+
+                JObject jObjs = new JObject();
+
+                JArray jSchoolsObjs = new JArray();
+                DataTable dt = dataSet.Tables[0];
+                if (dt.Rows.Count > 0)
+                {
+                    for (int j = 0; j < dt.Rows.Count; j++)
+                    {
+                        JObject jObj = new JObject();
+                        for (int i = 0; i < dt.Columns.Count; i++)
+                        {
+                            String columnName = dt.Columns[i].ColumnName;
+                            jObj[columnName] = dt.Rows[j][i].ToString();
+                        }
+                        jSchoolsObjs.Add(new JObject(jObj));
+                    }
+                }
+                jObjs["schools"] = new JArray(jSchoolsObjs);
+
+                JArray jCitiesObjs = new JArray();
+                dt = dataSet.Tables[1];
+                if (dt.Rows.Count > 0)
+                {
+                    for (int j = 0; j < dt.Rows.Count; j++)
+                    {
+                        JObject jObj = new JObject();
+                        for (int i = 0; i < dt.Columns.Count; i++)
+                        {
+                            String columnName = dt.Columns[i].ColumnName;
+                            jObj[columnName] = dt.Rows[j][i].ToString();
+                        }
+                        jCitiesObjs.Add(new JObject(jObj));
+                    }
+                }
+                jObjs["cities"] = new JArray(jCitiesObjs);
+
+                JArray jCountriesObjs = new JArray();
+                dt = dataSet.Tables[2];
+                if (dt.Rows.Count > 0)
+                {
+                    for (int j = 0; j < dt.Rows.Count; j++)
+                    {
+                        JObject jObj = new JObject();
+                        for (int i = 0; i < dt.Columns.Count; i++)
+                        {
+                            String columnName = dt.Columns[i].ColumnName;
+                            jObj[columnName] = dt.Rows[j][i].ToString();
+                        }
+                        jCountriesObjs.Add(new JObject(jObj));
+                    }
+                }
+                jObjs["countries"] = new JArray(jCountriesObjs);
+
+
+                result["ESTADO"] = "TRUE";
+                result["MENSAJE"] = "Consulta correcta";
+                result["RESULTADO"] = jObjs;
+            }
+            catch (System.Data.SqlClient.SqlException e)
+            {
+                result["ESTADO"] = "FALSE";
+                result["MENSAJE"] = "Consulta Incorrecta. Query: " + e.ToString();
+                result["QUERY"] = "Query: " + adapter.SelectCommand.CommandText;
+                return result;
+            }
+            conexion.closeConexion();
+        }
+        else
+        {
+            result["ESTADO"] = "FALSE";
+            result["MENSAJE"] = "Consulta Incorrecta. Conexion: " + conexion.openConexion();
+            return result;
+        }
+        return result;
+    }
+
+    public JObject getRankingTable(JObject param)
+    {
+        JObject result = new JObject();
+        ConexionSQL conexion = new ConexionSQL();
+        String schoolId;
+
+        if ((conexion.openConexion()) == "TRUE")
+        {
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            try
+            {
+                adapter = new SqlDataAdapter(
+                    String.Format(@"
+                        SELECT
+	                        s.name as schoolName,
+	                        s.city,
+	                        s.country,
+	                        ( r.student_name + ' ' + r.student_last_name ) as studentName,
+	                        r.class_group,
+	                        r.labs_delivery,
+	                        r.score
+                        FROM
+	                        ranking r
+                        INNER JOIN schools s ON r.school_id = s.id
+                        ORDER BY
+	                        r.score DESC
+                        "
+                    ),
+                    conexion.getConexion()
+                );
+
+                DataSet dataSet = new DataSet();
+                adapter.Fill(dataSet);
+
+                JArray jObjs = new JArray();
+                DataTable dt = dataSet.Tables[0];
+                if (dt.Rows.Count > 0)
+                {
+                    for (int j = 0; j < dt.Rows.Count; j++)
+                    {
+                        JObject jObj = new JObject();
+                        for (int i = 0; i < dt.Columns.Count; i++)
+                        {
+                            String columnName = dt.Columns[i].ColumnName;
+                            jObj[columnName] = dt.Rows[j][i].ToString();
+                        }
+                        jObjs.Add(new JObject(jObj));
+                    }
+                }
+
+                result["ESTADO"] = "TRUE";
+                result["MENSAJE"] = "Consulta correcta";
+                result["RESULTADO"] = jObjs;
+            }
+            catch (System.Data.SqlClient.SqlException e)
+            {
+                result["ESTADO"] = "FALSE";
+                result["MENSAJE"] = "Consulta Incorrecta. Query: " + e.ToString();
+                result["QUERY"] = "Query: " + adapter.SelectCommand.CommandText;
+                return result;
+            }
+            conexion.closeConexion();
+        }
+        else
+        {
+            result["ESTADO"] = "FALSE";
+            result["MENSAJE"] = "Consulta Incorrecta. Conexion: " + conexion.openConexion();
+            return result;
+        }
+        return result;
+    }
+
 }

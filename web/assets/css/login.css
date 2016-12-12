@@ -1,0 +1,182 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+/*@font-face {
+  font-family: 'Eurostile LT Std Demi Oblique';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Eurostile LT Std Demi Oblique'), url('../fonts/Eurostile-LT-Std-Demi-Oblique_16309.woff') format('woff');
+}*/
+
+.login-page {
+  padding: 8% 0 0;
+  margin: auto;
+}
+.form {
+  position: relative;
+  z-index: 1;
+  background: #D4D7DB;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 7px 7px 0 rgba(0, 0, 0, 0.24);
+}
+.form input {
+  font-family: 'Lato', sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: rgba(0,0,0,0.75);
+}
+
+.form button {
+  font-family: 'Lato', sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: rgb(26,80,130);
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+}
+.form button:hover,.form button:active,.form button:focus {
+  background: rgba(26,80,130,0.9);
+}
+
+body.in-login{
+  background: #0E3C67 url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHJhZGlhbEdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9ImNpcmNsZSIgY3k9ImZhcnRoZXN0LXNpZGUiIHI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMzMzMzMzMiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMxMTExMTEiLz48L3JhZGlhbEdyYWRpZW50PjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIiAvPjwvc3ZnPiA=');
+  background: #0E3C67 -moz-radial-gradient(circle farthest-side, #376693, #0E3C67) !important;
+  background: #0E3C67 -webkit-radial-gradient(circle farthest-side, #376693, #0E3C67) !important;
+  background: #0E3C67 radial-gradient(circle farthest-side, #376693, #0E3C67) !important;
+  background: #0E3C67;
+  font-family: 'Lato', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;      
+}
+
+@media screen and (orientation:portrait) {
+  .login-page .form {
+    max-width: 85%;
+    margin-top: 25%;
+  }
+}
+
+@media screen and (min-width: 550px )and (orientation:portrait) {
+  .login-page .form {
+    max-width: 65%;
+    margin-top: 25%;
+  }
+}
+
+@media screen and (min-width: 959px ) {
+  .login-page .form {
+    max-width: 33%;
+  }
+
+  .form input {
+    margin: 0 0 13px;
+    padding: 13px;
+    font-size: 13px;
+  }
+
+  .form button {
+    padding: 6px;
+    font-size: 13.5px;
+  }
+}
+
+@media screen and (min-width: 1200px ) {
+  .login-page .form {
+    max-width: 33%;
+  }
+
+  .form input {
+    margin: 0 0 13px;
+    padding: 15px;
+    font-size: 15px;
+  }
+
+  .form button {
+    padding: 10px;
+    font-size: 15px;
+  }
+}
+
+@media screen and (min-width: 1400px ) {
+  .login-page .form {
+    max-width: 35%;
+  }
+
+  .form input {
+    margin: 0 0 16px;
+    padding: 16px;
+    font-size: 16px;
+  }
+
+  .form button {
+    padding: 10px;
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width: 1600px ) {
+  .login-page .form {
+    max-width: 37%;
+  }
+
+  .form input {
+    margin: 0 0 18px;
+    padding: 18px;
+    font-size: 20px;
+  }
+
+  .form button {
+    padding: 15px;
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 1800px ) {
+  .login-page .form {
+    max-width: 41%;
+  }
+
+  .form input {
+    margin: 0 0 23px;
+    padding: 23px;
+    font-size: 23px;
+  }
+
+  .form button {
+    padding: 23px;
+    font-size: 23px;
+  }
+}
+
+@media screen and (min-width: 2000px ) {
+  .login-page .form {
+    max-width: 43%;
+  }
+
+  .form input {
+    margin: 0 0 26px;
+    padding: 26px;
+    font-size: 1.01em;
+  }
+
+  .form button {
+    padding: 26px;
+    font-size: 1.01em;
+  }
+}
