@@ -193,9 +193,12 @@ public class Ranking
                     adapter.SelectCommand.ExecuteNonQuery();
                 }
 
+                JObject jObjSId = new JObject();
+                jObjSId["schoolId"] = schoolId;
+
                 result["ESTADO"] = "TRUE";
                 result["MENSAJE"] = "Consulta correcta";
-                result["RESULTADO"] = new JArray(obj.ToString());
+                result["RESULTADO"] = new JObject(jObjSId);
                 result["N"] = students.Count.ToString();
             }
             catch (System.Data.SqlClient.SqlException e)

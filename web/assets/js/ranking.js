@@ -116,7 +116,7 @@
         $cDropDownMenu.html("");
         if(data.length == 0){
             //setTableAnun('-1');
-            $cDropDown.children('button').text('Ninguno')
+            $cDropDown.children('button').text('Ninguna')
             return;
         }
         else{
@@ -163,7 +163,7 @@
         $sDropDownMenu.html("");
         if(data.length == 0){
             //setTableAnun('-1');
-            $sDropDown.children('button').text('Ninguno')
+            $sDropDown.children('button').text('Ninguna')
             return;
         }
         else{
@@ -306,13 +306,13 @@
             },
 
             fields: [
-                { name: "country", type: "text", align: "center", title: "País" },
-                { name: "city", type: "text", align: "center", title: "Ciudad" },
-                { name: "schoolName", type: "text", align: "center", title: "Escuela" },
+                { name: "country", type: "text", align: "center", title: "País", width: 65 },
+                { name: "city", type: "text", align: "center", title: "Ciudad", width: 65 },
+                { name: "schoolName", type: "text", align: "center", title: "Colegio" },
                 { name: "studentName", type: "text", align: "center", title:"Estudiante" },
-                { name: "class_group", type: "text", align: "center", title:"Grupo" },
-                { name: "labs_delivery", type: "text", align: "center", title:"L" },
-                { name: "score", type: "text", align: "center", title:"Pts." },
+                { name: "class_group", type: "text", align: "center", title:"Grupo", width: 65 },
+                { name: "labs_delivery", type: "text", align: "center", title:"L", width: 30 },
+                { name: "score", type: "text", align: "center", title:"Pts.", width: 35 },
                 { type: "control" }
             ]
         });
