@@ -238,18 +238,20 @@ public class Ranking
 	                        schools
 
                         SELECT	
-	                        city as name
+	                        ci.name as name
                         FROM
-	                        schools
+	                        schools s
+                        INNER JOIN cities ci ON s.city = ci.id
                         GROUP BY
-	                        city
+	                        ci.name
 
                         SELECT	
-	                        country as name
+	                        co.name as name
                         FROM
-	                        schools
+	                        schools s
+                        INNER JOIN countries co ON s.country = co.id
                         GROUP BY
-	                        country
+	                        co.name
                         "
                     ),
                     conexion.getConexion()
@@ -350,8 +352,8 @@ public class Ranking
                     String.Format(@"
                         SELECT
 	                        s.name as schoolName,
-	                        s.city,
-	                        s.country,
+	                        ci.name as city,
+	                        co.name as country,
 	                        ( r.student_name + ' ' + r.student_last_name ) as studentName,
 	                        r.class_group,
 	                        r.labs_delivery,
@@ -359,6 +361,8 @@ public class Ranking
                         FROM
 	                        ranking r
                         INNER JOIN schools s ON r.school_id = s.id
+                        INNER JOIN cities ci ON s.city = ci.id
+                        INNER JOIN countries co ON s.country = co.id
                         ORDER BY
 	                        r.score DESC
                         "
