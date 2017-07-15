@@ -45,7 +45,11 @@ public class Ranking
 		                            FROM
 			                            schools s
 		                            WHERE
-			                            s.id = @schoolId
+			                            s.id = @schoolId OR
+                                        (
+		                                    s.city = @schoolCity AND
+		                                    s.country = @schoolCountry
+                                        )
 	                            )
                             )
                             BEGIN
@@ -236,6 +240,8 @@ public class Ranking
 	                        name as name
                         FROM
 	                        schools
+                        ORDER BY
+                            name ASC
 
                         SELECT	
 	                        ci.name as name
@@ -244,6 +250,8 @@ public class Ranking
                         INNER JOIN cities ci ON s.city = ci.id
                         GROUP BY
 	                        ci.name
+                        ORDER BY
+                            ci.name ASC
 
                         SELECT	
 	                        co.name as name
@@ -252,6 +260,8 @@ public class Ranking
                         INNER JOIN countries co ON s.country = co.id
                         GROUP BY
 	                        co.name
+                        ORDER BY
+                            co.name ASC
                         "
                     ),
                     conexion.getConexion()
