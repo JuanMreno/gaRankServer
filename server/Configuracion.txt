@@ -12,9 +12,9 @@
 
 >Servidor:
 >Dirección URL      = http://181.48.134.34/rankingLab/server/
->HOST Servidor SQL  = 181.48.134.34
->Usuario            = rankingLab
->Pass               = Juan311!
+>HOST Servidor SQL  = 67.23.242.74
+>Usuario            = juan.moreno@indesap.com
+>Pass               = M0r3n02017!
 >Base de Datos      = RANKING
 >
 

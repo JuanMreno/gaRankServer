@@ -19,6 +19,14 @@
 
     function setDropsDown() {
 
+        var countryFilter   = $.trim($('#countryDropDownBtn').text());
+        var cityFilter      = $.trim($('#cityDropDownBtn').text());
+        var schoolFilter    = $.trim($('#schoolDropDownBtn').text());
+
+        //console.log(countryFilter)
+        //console.log(cityFilter)
+        //console.log(schoolFilter)
+
         var data = {
             METHOD:"getFilters",
             PARAMS:{}

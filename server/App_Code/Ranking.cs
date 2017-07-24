@@ -110,6 +110,21 @@ public class Ranking
                 }
 
                 schoolId = obj.ToString();
+                
+                adapter = new SqlDataAdapter(
+                    String.Format(@"
+                            DECLARE @schoolId INT = {0}
+                            
+                            DELETE FROM
+	                            ranking
+                            WHERE
+	                            school_id = @schoolId
+                            ",
+                        schoolId
+                    ),
+                    conexion.getConexion()
+                );
+                adapter.SelectCommand.ExecuteNonQuery();
 
                 JArray students = (JArray)param["students"];
                 for(int i=0; i<students.Count; i++)
