@@ -37,6 +37,7 @@ public class Ranking
                             DECLARE @schoolName varchar(100) = '{1}'
                             DECLARE @schoolCity varchar(100) = '{2}'
                             DECLARE @schoolCountry varchar(100) = '{3}'
+                            DECLARE @query varchar(1000) = '{4}'
 
                             IF(
 	                            NOT EXISTS (
@@ -47,6 +48,7 @@ public class Ranking
 		                            WHERE
 			                            s.id = @schoolId OR
                                         (
+		                                    s.name = @schoolName AND
 		                                    s.city = @schoolCity AND
 		                                    s.country = @schoolCountry
                                         )
@@ -70,24 +72,36 @@ public class Ranking
                             END
                             ELSE
                             BEGIN
-	                            UPDATE
-		                            schools
-	                            SET
-		                            name = @schoolName,
-		                            city = @schoolCity,
-		                            country = @schoolCountry
-	                            WHERE
-		                            id = @schoolId
+                                SELECT
+                                    @schoolId = [id],
+	                                @schoolName = [name],
+	                                @schoolCity = [city],
+	                                @schoolCountry = [country]
+                                FROM
+	                                schools
+                                WHERE
+	                                id = @schoolId OR
+                                    (
+		                                name = @schoolName AND
+		                                city = @schoolCity AND
+		                                country = @schoolCountry
+                                    )
                             END
-
-                            SELECT
-	                            @schoolName = [name],
-	                            @schoolCity = [city],
-	                            @schoolCountry = [country]
-                            FROM
-	                            schools
+                            
+                            DELETE FROM
+	                            ranking
                             WHERE
-	                            id = @schoolId
+	                            school_id = @schoolId
+
+                            INSERT INTO
+                                queries
+                            (
+                                query
+                            )
+                            VALUES
+                            (
+                                @query
+                            )
 
                             SELECT
 	                            @schoolId
@@ -95,7 +109,8 @@ public class Ranking
                         param["schoolId"].ToString(),
                         param["schoolName"].ToString(),
                         param["schoolCity"].ToString(),
-                        param["schoolCountry"].ToString()
+                        param["schoolCountry"].ToString(),
+                        param.ToString()
                     ),
                     conexion.getConexion()
                 );
@@ -111,6 +126,7 @@ public class Ranking
 
                 schoolId = obj.ToString();
                 
+                /*
                 adapter = new SqlDataAdapter(
                     String.Format(@"
                             DECLARE @schoolId INT = {0}
@@ -125,6 +141,7 @@ public class Ranking
                     conexion.getConexion()
                 );
                 adapter.SelectCommand.ExecuteNonQuery();
+                */
 
                 JArray students = (JArray)param["students"];
                 for(int i=0; i<students.Count; i++)
